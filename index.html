@@ -21,15 +21,14 @@
             overflow: hidden;
         }
 
-        /* Motorrad-Bild */
-        .hero-bg {
+        /* Motorrad BACKGROUND */
+        .hero::after {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;     /* GANZES BILD SICHTBAR */
-            background: #000;        /* schwarzer Hintergrund */
+            inset: 0;
+            background-image: url('IMG_8254.jpeg');
+            background-size: cover;
+            background-position: center;
             filter: grayscale(100%);
             z-index: 1;
         }
@@ -48,13 +47,12 @@
             z-index: 2;
         }
 
-        /* Text auf dem Bild */
+        /* Text */
         .hero-text {
             position: absolute;
             top: 25%;
             left: 5%;
             z-index: 3;
-            color: white;
         }
 
         .hero-text h1 {
@@ -80,10 +78,6 @@
 <body>
 
     <div class="hero">
-        <!-- DEIN BILD (neuer Name) -->
-        <img src="IMG_8254.jpeg" class="hero-bg" alt="Sportbike Rider">
-
-        <!-- TEXT -->
         <div class="hero-text">
             <h1>UNLEASH THE<br>SPEED.</h1>
             <p>Sicherheitsprodukte, Performance Gear & Zubehör für echte Biker.</p>
