@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPEED FORCE – Moto Safety & Performance</title>
+    <title>Speed Force – Moto Safety & Performance</title>
 
     <style>
         body {
@@ -13,89 +13,81 @@
             color: white;
         }
 
-        /* HEADER / HERO BEREICH MIT DEINEM BILD */
+        /* HERO SECTION */
         .hero {
-            background-image: url("IMG_8247.jpeg"); /* <-- Dein Bild */
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* Schräger roter Balken */
-        .hero::before {
-            content: "";
+        /* Motorrad-Bild */
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: #cc0000;
-            transform: skewY(-12deg);
-            transform-origin: top left;
+            height: 100%;
+            object-fit: contain;     /* GANZES BILD SICHTBAR */
+            background: #000;        /* schwarzer Hintergrund */
+            filter: grayscale(100%);
             z-index: 1;
         }
 
-        /* Text oben auf dem Bild */
-        .hero-text {
+        /* Roter schräger Balken */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 200%;
+            height: 60%;
+            background: #b00000;
+            transform: rotate(-12deg);
+            transform-origin: left;
             z-index: 2;
-            text-align: left;
-            max-width: 90%;
-            padding: 20px;
+        }
+
+        /* Text auf dem Bild */
+        .hero-text {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            z-index: 3;
+            color: white;
         }
 
         .hero-text h1 {
             font-size: 48px;
-            font-weight: 900;
+            font-weight: 800;
+            margin: 0;
             line-height: 1.1;
-            text-transform: uppercase;
         }
 
         .hero-text p {
             font-size: 20px;
-            margin-top: 10px;
+            margin-top: 25px;
+            max-width: 90%;
         }
 
-        /* Abschnitt: Kategorien */
-        .section {
-            padding: 40px 20px;
-        }
-
-        .section h2 {
-            font-size: 32px;
-            color: #e60000;
-        }
-
-        .list-item {
-            font-size: 22px;
-            padding: 12px 0;
-            border-bottom: 1px solid #333;
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 35px; }
+            .hero-text p { font-size: 16px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HERO-BEREICH -->
-    <header class="hero">
+    <div class="hero">
+        <!-- DEIN BILD -->
+        <img src="IMG_8254.png" class="hero-bg" alt="Sportbike Rider">
+
+        <!-- TEXT -->
         <div class="hero-text">
-            <h1>UNLEASH THE SPEED.</h1>
+            <h1>UNLEASH THE<br>SPEED.</h1>
             <p>Sicherheitsprodukte, Performance Gear & Zubehör für echte Biker.</p>
         </div>
-    </header>
-
-    <!-- PRODUKT-KATEGORIEN -->
-    <div class="section">
-        <h2>🔥 Sicherheitsprodukte</h2>
-
-        <div class="list-item">Motorrad Airbag Westen</div>
-        <div class="list-item">Protektoren & Rückenpanzer</div>
-        <div class="list-item">Sicherheitsjacken</div>
-        <div class="list-item">Reflektierende Ausrüstung</div>
     </div>
 
 </body>
