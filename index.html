@@ -1,294 +1,161 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Curve — Night Rider Visibility Gear</title>
-  <meta name="description" content="Curve — Sichtbare Motorradbekleidung für Nachtfahrer. Reflektierend, stylisch und sicher." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curve – Gear for Night Riders</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
 
-  <style>
-    /* Grund */
-    :root{
-      --bg:#000;
-      --fg:#fff;
-      --accent:#b00000; /* rot */
-      --muted: rgba(255,255,255,0.85);
-      --card-bg: rgba(255,255,255,0.03);
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--fg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-    }
+        /* HEADER SECTION */
+        .hero {
+            position: relative;
+            width: 100%;
+        }
 
-    /* NAV */
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:18px 20px;
-      position:fixed;
-      width:100%;
-      z-index:60;
-      top:0;
-      left:0;
-      background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0));
-      gap:12px;
-    }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .logo{
-      width:44px;height:44px;border-radius:8px;background:var(--fg);
-      color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;
-    }
-    .brand h1{margin:0;font-size:18px;letter-spacing:1px}
-    .nav .cta{background:transparent;border:1px solid rgba(255,255,255,0.14);padding:8px 12px;border-radius:8px;color:var(--fg);cursor:pointer}
+        .hero img {
+            width: 100%;
+            display: block;
+        }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      width:100%;
-      min-height:78vh;
-      height:calc(100vh - 72px);
-      display:flex;
-      align-items:flex-end;
-      overflow:hidden;
-    }
-    .hero .bg{
-      position:absolute;inset:0;
-      width:100%;height:100%;
-      object-fit:cover; /* zeigt das ganze Bild, crop falls nötig */
-      filter:grayscale(100%) contrast(105%);
-      transform-origin:center;
-    }
+        .hero-text {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            color: white;
+        }
 
-    /* Schräger roter Balken (unten/links) */
-    .hero::after{
-      content:"";
-      position:absolute;
-      z-index:3;
-      left:-10%;
-      top:-20%;
-      width:140%;
-      height:60%;
-      background:var(--accent);
-      transform:rotate(-14deg);
-      transform-origin:left;
-      pointer-events:none;
-      mix-blend-mode:multiply;
-    }
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0;
+        }
 
-    .hero .hero-inner{
-      position:relative;
-      z-index:6;
-      padding:40px 6%;
-      max-width:1200px;
-    }
+        .hero-text p {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
 
-    .hero h2{
-      margin:0 0 12px 0;
-      font-size:56px;
-      line-height:0.98;
-      letter-spacing:1px;
-      font-weight:900;
-      color:var(--fg);
-      text-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    }
-    .hero p.lead{
-      color:var(--muted);
-      font-size:18px;
-      margin:0 0 18px 0;
-      max-width:740px;
-    }
+        /* PRODUCT SECTION */
+        .products {
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-    /* Produkte */
-    .section{
-      padding:48px 6% 80px;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-      margin-top:28px;
-    }
-    .card{
-      background:var(--card-bg);
-      border-radius:12px;
-      padding:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.04);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .card img{
-      width:100%; height:140px; object-fit:cover; border-radius:8px;
-      background: linear-gradient(180deg,#222,#111);
-    }
-    .card h3{margin:0;font-size:18px}
-    .price{margin-left:auto;font-weight:700;color:var(--fg)}
-    .tags{font-size:13px;color:var(--muted)}
-    .btn{
-      display:inline-block;
-      padding:10px 14px;border-radius:10px;
-      background:var(--accent);color:white;text-decoration:none;font-weight:700;
-      text-align:center;
-    }
+        .products h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
 
-    /* Footer */
-    footer{
-      padding:40px 6%;
-      color:var(--muted);
-      border-top:1px solid rgba(255,255,255,0.03);
-    }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
 
-    /* Responsive tweaks */
-    @media (max-width:800px){
-      .hero h2{font-size:36px}
-      .hero p.lead{font-size:16px}
-      .card img{height:120px}
-    }
-  </style>
+        .product {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            background: #181818;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            margin-top: 15px;
+            font-size: 1.3rem;
+        }
+
+        .product p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .btn {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 10px 18px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.6;
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <header class="nav" role="banner">
-    <div class="brand">
-      <div class="logo">Curve</div>
-      <div>
-        <h1 style="margin:0;font-size:16px">Curve</h1>
-        <div style="font-size:12px;color:var(--muted)">Gear for Night Riders</div>
-      </div>
-    </div>
-
-    <div>
-      <a class="nav-link" href="#products" style="color:var(--muted);margin-right:12px;text-decoration:none">Produkte</a>
-      <a class="cta" href="#kontakt">Kontakt</a>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" aria-label="Hero">
-    <!-- HIER muss die Bilddatei liegen: hero.jpg (root oder images/), sonst Namen anpassen -->
-    <img class="bg" src="hero.jpg" alt="Night rider on sportbike" />
-
-    <div class="hero-inner">
-      <h2>UNLEASH THE<br>SPEED.</h2>
-      <p class="lead">Sicherheitsprodukte, Performance Gear & Sichtbarkeitstechnik — speziell designed für Nachtfahrer. Reflektierend, robust und stylish.</p>
-      <a class="btn" href="#products">Produkte ansehen</a>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <main>
-    <section id="products" class="section" aria-labelledby="products-title">
-      <h2 id="products-title" style="margin:0;color:var(--fg)">Unsere Produkte</h2>
-      <p style="color:var(--muted);margin-top:6px">Auswahl der besten Visibility- und Performance-Gear für Nachtfahrer.</p>
-
-      <div class="grid" role="list">
-        <!-- Card 1 -->
-        <article class="card" role="listitem">
-          <img src="images/airbag-vest.jpg" alt="Airbag Weste" />
-          <div style="display:flex;align-items:center;gap:12px;">
-            <h3>Airbag Weste</h3>
-            <div class="price">€299</div>
-          </div>
-          <div class="tags">Sichtbar · Komfort · CE zertifiziert</div>
-          <p style="color:var(--muted);margin:8px 0 0 0;font-size:14px">Leichte, leistungsstarke Weste mit automatischem Auslöser und integriertem Reflektorband.</p>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card" role="listitem">
-          <img src="images/protector-back.jpg" alt="Rückenprotektor" />
-          <h3>Rückenprotektor</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div class="tags">Stoßdämpfend · Slim Fit</div>
-            <div class="price">€79</div>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card" role="listitem">
-          <img src="images/safety-jacket.jpg" alt="Sicherheitsjacke" />
-          <h3>Visibility Jacke</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div class="tags">Reflektor · Wasserdicht</div>
-            <div class="price">€159</div>
-          </div>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="card" role="listitem">
-          <img src="images/gloves.jpg" alt="Handschuhe" />
-          <h3>Night Grip Handschuhe</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div class="tags">Grip · Touchscreen</div>
-            <div class="price">€49</div>
-          </div>
-        </article>
-
-        <!-- Card 5 -->
-        <article class="card" role="listitem">
-          <img src="images/reflective-tape.jpg" alt="Reflektierendes Band" />
-          <h3>Reflex-Kit</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div class="tags">Universell · Klebbar</div>
-            <div class="price">€19</div>
-          </div>
-        </article>
-
-        <!-- Card 6 -->
-        <article class="card" role="listitem">
-          <img src="images/hoodie.jpg" alt="Speed Force Hoodie" />
-          <h3>Curve Hoodie (Limited)</h3>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div class="tags">Style · Warm</div>
-            <div class="price">€69</div>
-          </div>
-        </article>
-      </div>
-
-      <p style="margin-top:22px;color:var(--muted)">Tipp: Produktbilder legst du im Ordner <code>images/</code> ab. Benenne sie exakt wie in den <code>src</code>-Attributen (z.B. <code>images/airbag-vest.jpg</code>).</p>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <img src="images/curve_night_rider_small.jpeg" alt="Night Rider Motorradfahrer">
+        <div class="hero-text">
+            <h1>Curve</h1>
+            <p>Gear for Night Riders</p>
+        </div>
     </section>
 
-    <!-- Kontakt / Footer -->
-    <section id="kontakt" class="section" style="padding-top:10px;padding-bottom:60px;">
-      <h3 style="margin:0;color:var(--fg)">Kontakt</h3>
-      <p style="color:var(--muted)">Schreib uns: <a href="mailto:info@curve-gear.example" style="color:var(--muted);text-decoration:underline">info@curve-gear.example</a></p>
+    <!-- PRODUCTS -->
+    <section class="products">
+        <h2>Top Produkte</h2>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;">
-        <a class="btn" href="#kontakt">Anfrage senden</a>
-        <a class="cta" href="#products" style="text-decoration:none;margin-left:6px">Zur Produktübersicht</a>
-      </div>
+        <div class="product-grid">
+
+            <div class="product">
+                <img src="https://i.imgur.com/hKQJ6JF.jpeg" alt="Visibility Jacket">
+                <h3>NightVision Jacket</h3>
+                <p>Ultraleichte, reflektierende Motorradjacke für maximale Sichtbarkeit.</p>
+                <a class="btn" href="#">Ansehen</a>
+            </div>
+
+            <div class="product">
+                <img src="https://i.imgur.com/jQ49Q8b.jpeg" alt="Reflective Helmet">
+                <h3>ShadowLine Helmet</h3>
+                <p>Aerodynamischer Helm mit 360° Reflektorstreifen.</p>
+                <a class="btn" href="#">Ansehen</a>
+            </div>
+
+            <div class="product">
+                <img src="https://i.imgur.com/3nawIkw.jpeg" alt="Rider Gloves">
+                <h3>Midnight Grip Gloves</h3>
+                <p>Rutschfeste Handschuhe für sicheren Halt bei Nachtfahrten.</p>
+                <a class="btn" href="#">Ansehen</a>
+            </div>
+
+            <div class="product">
+                <img src="https://i.imgur.com/ii0rB6O.jpeg" alt="LED straps">
+                <h3>Luminex LED Straps</h3>
+                <p>Ultrahelle, flexible LEDs zur Montage am Motorrad.</p>
+                <a class="btn" href="#">Ansehen</a>
+            </div>
+
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-      <div>
-        <strong>Curve</strong> — Night Rider Visibility Gear<br>
-        © <span id="year"></span> Curve. Alle Rechte vorbehalten.
-      </div>
-      <div style="color:var(--muted);font-size:14px">Made with ♥ for night riders</div>
-    </div>
-  </footer>
+    <footer>
+        © 2025 Curve – Gear for Night Riders
+    </footer>
 
-  <script>
-    // kleines Detail: aktuelles Jahr
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
